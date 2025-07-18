@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: 'Vazirmatn', sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  direction: rtl;
+  font-family: 'Vazirmatn', sans-serif;
+  overflow-x: hidden;
+  @apply bg-zhuan-dark-green text-zhuan-light;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+.glass-effect {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-card {
+  /* This class will be replaced manually in components */
+  /* Keeping it for now to avoid breaking anything */
+  background: rgba(20, 38, 26, 0.5); /* Fallback to dark green transparent */
+  border: 1px solid rgba(204, 178, 139, 0.3);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+.glass-dark {
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.hover-lift {
+  transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.2);
+}
+
+.persian-input {
+  direction: rtl;
+  text-align: right;
+}
+
+.loading-spinner {
+  border: 3px solid rgba(204, 178, 139, 0.2); /* gold transparent */
+  border-top: 3px solid #ccb28b; /* gold */
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Hide scrollbar for mobile carousel */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Better mobile spacing */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    max-width: 100vw;
+  }
+  
+  .glass-card {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 100%;
+  }
+  
+  /* Prevent any element from causing horizontal scroll */
+  * {
+    max-width: 100vw;
+  }
+  
+  /* Fix for grid and flex containers */
+  .grid, .flex {
+    max-width: 100%;
+  }
+}
+
+/* Improved touch targets for mobile */
+@media (max-width: 768px) {
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  input {
+    min-height: 48px;
+  }
+}
+
+/* Line clamp utility for text truncation */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
